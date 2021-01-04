@@ -4,7 +4,7 @@
 summing-the-k-n-series
 """
 
-MAX_K = 1000
+MAX_K = 50
 MOD = 1000000009
 
 
