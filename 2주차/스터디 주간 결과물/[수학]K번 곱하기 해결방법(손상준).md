@@ -21,7 +21,7 @@ K 번 곱하기
 
 - 시간 초과로 인한 오답처리를 해결하지 못함
 
-'''python
+```python
 Num = list(map(int, input().split()))
 
 N = Num[0]
@@ -37,4 +37,4 @@ for i in range(1, N+1):
 Z = sum_Z % X
 
 print(Z)
-'''
+```
