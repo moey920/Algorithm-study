@@ -7,10 +7,8 @@ counter = Counter(sentence)
 check=0
 
 
-
-print(counter)
 lst_counter_value=list(counter.values())
-print(lst_counter_value)
+
 
 
 for i in lst_counter_value:
