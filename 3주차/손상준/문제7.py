@@ -1,10 +1,6 @@
 s = str(input())
 t = str(input())
 
-def is_valid_length (s, t): #문자열 개수가 다른 경우 예외처리
-    if len(t) % len(s) == 0: 
-        return(True)
-        
 def  is_same_word (s, t): #문자열 확인  
     S = len(s)
     V = len(t) // len(s)
@@ -14,11 +10,11 @@ def  is_same_word (s, t): #문자열 확인
                 return(True)
                         
 def print_ans(s,t): #정답 출력
-    if is_valid_length (s, t) != True:
-        print(0)
-    elif is_same_word (s, t) != True:
-        print(0)
-    else:
+    if is_same_word (t,s) == True:
         print(1)
+    elif is_same_word (s, t) == True:
+        print(1)
+    else:
+        print(0)
 
 print_ans(s,t)
