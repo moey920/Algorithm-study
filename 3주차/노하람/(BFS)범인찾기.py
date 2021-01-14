@@ -1,0 +1,40 @@
+# 한 단계 진행 시 가능한 경우의 수, 두 단계 진행 시 가능한 경우의 수 ... 이렇게 트리를 넓히면서 탐색하는 알고리즘이 바로 BFS 입니다.
+# (매 단계에서 모든 경우의 수를 탐색)
+# 장점 : 답이 되는 경로가 여러개인 경우에도 최단 경로 보장, 최단 경로가 존재하면 깊이가 무한정 깊어도 답을 찾을 수 있다
+# 단점 : 경로가 길 경우 많은 기억 공간 필요, 해가 존재하지 않는 유한 그래프의 경우 모든 그래프를 탐색 후 실패로 끝난다, 무한 그래프의 경우 해를 찾지도 끝내지도 못한다.
+
+# 순간이동 (현재위치 * 3)에 우선순위를 두기 위해, 곱하기 인 경우 큐의 좌측에 삽입하여 먼저 처리 될 수 있도록 하였다.
+from collections import deque
+
+def bfs(start):
+    q = deque([start])
+
+      # 큐가 빌 때까지 반복
+    while q:
+        # 현재 위치를 큐의 좌측에 삽입한다.
+        cur_loc = q.popleft()
+        # 현재 섹션이 찾고자하는 k 섹션이라면 방문처리를 리턴한다.
+        if cur_loc == k:
+            return visited[cur_loc]
+
+        # 큐의 이전 값(-1), 이후 값(+1), 공간이동 값(*3) 중 최적값을 추적한다
+        for next_loc in (cur_loc - 1, cur_loc + 1, cur_loc * 3):
+            # 다음 섹션이 최대 섹션값보다 작고 0보다 크며, 방문하지 않았다면 현재 섹션 값을 다음 섹션에 삽입한다.
+            if 0 <= next_loc < MAX_LOC and not visited[next_loc]:
+                visited[next_loc] = visited[cur_loc]
+
+                # 다음 섹션이 현재 섹션*3보다 크고, 현재 섹션이 0보다 크다면
+                if next_loc > cur_loc * 3 and cur_loc > 0:
+                    # 먼저 큐의 좌측에 삽입한다(우선적으로)
+                    q.appendleft(next_loc)
+                # 위와 같은 경우가 아니라면 현재 섹션에서 1만큼 이동한 값으로 계속 진행하고 다음 섹션을 큐에 삽입한다.
+                else:
+                    visited[next_loc] = visited[cur_loc] + 1
+                    q.append(next_loc)
+
+
+if __name__ == '__main__':
+    MAX_LOC = 100000
+    n, k = map(int, input().split())
+    visited = [0] * MAX_LOC
+    print(bfs(n))
