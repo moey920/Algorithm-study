@@ -7,3 +7,9 @@ for i in range(4): #지폐 걔수 리스트 생성
     M = M % K 
 
 print(sum(C)) #지폐 개수 합 출력
+
+
+
+
+## for i in M 
+## -> 리스트 요소 모두 출력
