@@ -12,7 +12,7 @@ for i in range(100):
         for j in month2:
             if j in day.keys():
                 day_index += j
-                day[7]+=1
+                day[day_index%7]+=1
     else:
         for j in month1:
             if j in day.keys():
