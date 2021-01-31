@@ -5,7 +5,6 @@
 3. 이렇게해서 이어진 땅을 모두 바다로 바꾸고 해당 지역은 하나의 1로 카운트된다.
 """
 
-
 from collections import deque
 
 def bfs(x, y):
@@ -31,19 +30,18 @@ def bfs(x, y):
                     maps[nx][ny] = 0 # 해당 좌표를 바다로 바꾸고
                     queue.append((nx, ny)) # 큐에 다음에 탐색할 값으로 넣는다. (빈 큐가 아니게 되어 while문으로 돌아감)
                     
-while True:
-    M, N, K = map(int, input().split()) # 가로 M, 세로 N, 땅의 개수 K
-    maps = [[0]*M for _ in range(N)] # M*N 배열 초기화
-    for _ in range(K) :
-        i, j = map(int, input().split())
-        maps[j][i] = 1 # 입력받은 땅의 좌표를 기록한 maps 획득
-    cnt = 0
-    
-    for i in range(N):
-        for j in range(M):
-            if maps[i][j] != 0 : # 땅에 있다면
-                cnt += 1 # 방문처리를 하고
-                bfs(i, j) # 이동하는 bfs 함수를 호출한다
-                
-    print(cnt)
-    break
+                    
+M, N, K = map(int, input().split()) # 가로 M, 세로 N, 땅의 개수 K
+maps = [[0]*M for _ in range(N)] # M*N 배열 초기화
+for _ in range(K) :
+    i, j = map(int, input().split())
+    maps[j][i] = 1 # 입력받은 땅의 좌표를 기록한 maps 획득
+cnt = 0
+
+for i in range(N):
+    for j in range(M):
+        if maps[i][j] != 0 : # 땅에 있다면
+            cnt += 1 # 방문처리를 하고
+            bfs(i, j) # 이동하는 bfs 함수를 호출한다
+            
+print(cnt)
