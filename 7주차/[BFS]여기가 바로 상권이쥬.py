@@ -8,29 +8,30 @@ for i in range(n):
     for j in range(n):
         info[i][j]=int(m[j])
 
-visited=[[0]*n for _ in range(n)]
+visited=[[False]*n for _ in range(n)]
 
 dx=[0,0,1,-1]
 dy=[1,-1,0,0]
 
 def bfs(x,y):
     cnt=0
+    if info[x][y]==1 and visited[x][y]==0:
+        cnt=1
     q=deque()
     q.append((x,y))
-    visited[x][y]=1
+    visited[x][y]=True
     
     while q:
         x, y=q.popleft()
-        
         for i in range(4):
             nx=x+dx[i]
             ny=y+dy[i]
-            
             if 0<=nx<n and 0<=ny<n:
                 if info[nx][ny]==1 and visited[nx][ny]==0:
                     q.append((nx, ny))
-                    visited[nx][ny]=1
+                    visited[nx][ny]=True
                     cnt+=1
+            
 
     return cnt
 
