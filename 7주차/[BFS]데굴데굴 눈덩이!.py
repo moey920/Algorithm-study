@@ -23,7 +23,7 @@ def bfs(pos):
 
 n=int(input())
 snowmap=[list(map(int, input().split())) for _ in range(n)]
-visited=[[0]*n for _ in range(n)]
+
 cnt=0
 res=[]
 
