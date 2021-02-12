@@ -1,33 +1,30 @@
+from collections import deque
+
+
 N, A, G, U, D=map(int, input().split())
 
-elevator=[0]*(N+1)
-
-
-elevator[A]='start'
-elevator[G]='finish'
-
-pos=A
 cnt=0
+ans=A
+dnum=0
 
-while True:
-    pos+=U
-    if A<=pos<=G:
-        
-        if elevator[pos]==0:
-            elevator[pos]=1
-        elif elevator[pos]=='finish':
-            print(cnt+1)
+if (U-D)!=0 and (G-A)%(U-D)!=0:
+    print('계단을 사용하세요.')
+elif U!=0 and D!=0 and (U-D)==0 and (G-A)%U!=0:
+    print('계단을 사용하세요.')
+elif U==0:
+    print('계단을 사용하세요.')
+else:
+    while True:
+        ans+=U
+        cnt+=1
+        if ans==G:
             break
-    elif N<pos:
-        pos-=U
-        if elevator[pos-D]==0:
-            elevator[pos-D]=1
-            pos-=D
-        elif elevator[pos-D]==1:
-            print('계단을 사용하세요.')
-            break
-    else:
-        print(cnt+1)
-        break
+        elif ans>G:
+            dnum +=1
+            ans=A-(D*dnum)
+            cnt=dnum
 
-    cnt+=1
+    print(cnt)
+    
+    
+
