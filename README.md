@@ -30,3 +30,6 @@ repository - n주차  - racer1    - 문제1.py
 #### 튜터링
 * 매주 수요일 튜터님이 **Gitlab n주차_튜터링에서 작성된 Merge Request를 보며** 코드와 내용을 바탕으로 문제에 대한 피드백 및 해설을 제공합니다.
 
+
+###### 해당 repository의 학습 내용은 엘리스 AI 서비스 기획/개발 트랙의 수업자료를 참고한 것임을 밝힙니다.  
+출처: [엘리스 AI 트랙 1기](https://aitrack.elice.io/)
